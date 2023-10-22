@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <title>
+            my hemming code
+        </title>
+            <script>
+                function code(){
+                    let inpText = document.getElementById('inpMessege').value;
+                    inpText = inpText.split('');
+                    for (let i = 0; i < inpText.length; i++){
+                        inpText[i] = inpText[i]*1;
+                    }
+                    let cb1 = (inpText[0] + inpText[2] + inpText[3]) % 2;
+                    let cb2 = (inpText[0] + inpText[1] + inpText[3]) % 2;
+                    let cb3 = (inpText[1] + inpText[2] + inpText[3]) % 2;
+                    inpText = inpText.join('')
+                    document.getElementById('outMessege').value = inpText + cb1 + cb2 + cb3;
+                    value = inpText.join('')    
+                }
+                function check(){
+            let inpText = document.getElementById('outMessege').value;
+            inpText = inpText.split('');
+            for (let i = 0; i < inpText.length; i++){
+                inpText[i] = inpText[i]*1;
+            }
+            let c1 = (inpText[0] + inpText[2] + inpText[3]) % 2;
+            let c2 = (inpText[0] + inpText[1] + inpText[3]) % 2;
+            let c3 = (inpText[1] + inpText[2] + inpText[3]) % 2;
+            if (c1!=inpText[4] && c2!=inpText[5] && c3!=inpText[6]){
+                inpText[3]=(inpText[3]+1) %2;
+                inpText[3]+='';
+            }
+            else if (c1!=inpText[4] && c2!=inpText[5]) {
+                inpText[0]=(inpText[0]+1) % 2;
+                inpText[0]+='';
+            }
+            else if(c2!=inpText[5] && c3!=inpText[6]){
+                inpText[1]=(inpText[1]+1) % 2;
+                inpText[1]+='';
+            }
+            else if (c1!=inpText[4] && c3!=inpText[6]){
+                inpText[2]=(inpText[2]+1) % 2;
+                inpText[2]+='';
+            }
+            else if (c1!=inpText[4]){
+                inpText[4]=c1;
+            }
+            else if (c2!=inpText[5]){
+                inpText[5]=c2;
+            }
+            else if (c3!=inpText[6]){
+                inpText[6]=c3;
+            }
+            inpText = inpText.join('')
+            document.getElementById('checkMessege').value = inpText;
+            value = inpText.join('')   
+        }
+            </script>
+    </head>
+    <body>
+        <h1> ira </h1>
+       <p> <input type = 'text' id = 'inpMessege'/> input messege, 4 bits</p>
+       <p> <input type = 'button' value = 'code' onclick = 'code()'/></p>
+       <p> <input type = 'text'  id = 'outMessege' coded messege/></p>
+       <p> <input type = 'button' value = 'check' onclick = 'check()'/></p>
+       <p> <input type = 'text' id = 'checkMessege'/> original messege</p>
+       <p></p>
+    </body>
+</html>
